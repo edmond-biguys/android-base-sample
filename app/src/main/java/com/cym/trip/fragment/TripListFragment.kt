@@ -24,8 +24,10 @@ import com.cym.sample.persistence.PersistenceSampleActivity
 import com.cym.sample.storage.StorageTestActivity
 import com.cym.sample.threadtest.ThreadTestActivity
 import com.cym.sunflower.GardenActivity
+import com.cym.utilities.logi
 import com.xmcc.androidbasesample.databinding.ItemFunctionListBinding
 import com.xmcc.androidbasesample.databinding.TripListFragmentBinding
+import kotlin.math.log
 
 class TripListFragment : Fragment() {
 
@@ -67,11 +69,11 @@ class TripListFragment : Fragment() {
         }
     }
 
-    class MyAdapter(val items: MutableList<String>, val context: Context): RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+    inner class MyAdapter(val items: MutableList<String>, val context: Context): RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
         private lateinit var itemBinding: ItemFunctionListBinding
 
-        class MyViewHolder(binding: ItemFunctionListBinding, view: View): RecyclerView.ViewHolder(view) {
+        inner class MyViewHolder(binding: ItemFunctionListBinding, view: View): RecyclerView.ViewHolder(view) {
             val title = binding.textViewFunction
         }
 
@@ -171,11 +173,21 @@ class TripListFragment : Fragment() {
             context.startActivity(Intent(context, FileDownloadActivity::class.java))
         }
         private fun navigateThreadTestActivity(context: Context) {
-            context.startActivity(Intent(context, ThreadTestActivity::class.java))
+            //context.startActivity(Intent(context, ThreadTestActivity::class.java))
+            activity?.startActivityForResult(Intent(context, ThreadTestActivity::class.java), 1100)
         }
 
         override fun getItemCount(): Int {
             return items.size
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        logi("result code $resultCode")
+        data?.let {
+            val abc = data.getIntExtra("abc", -1)
+            logi("abc $abc")
         }
     }
 

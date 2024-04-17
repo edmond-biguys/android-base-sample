@@ -72,6 +72,15 @@ class MainActivity : BaseActivity() {
 
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        logi("result code $resultCode")
+        data?.let {
+            val abc = data.getIntExtra("abc", -1)
+            logi("abc $abc")
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         logi("MainActivity onDestroy")

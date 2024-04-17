@@ -1,5 +1,6 @@
 package com.cym.sample.threadtest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,12 +18,21 @@ class ThreadTestActivity : AppCompatActivity() {
         initListener()
     }
 
+
+
     private fun initListener() {
         binding.btnNew.setOnClickListener {
             newThread()
         }
         binding.btnJoin.setOnClickListener {
             joinTest()
+        }
+        binding.button8.setOnClickListener {
+
+            val intent = intent
+            intent.putExtra("abc", 123)
+            setResult(RESULT_OK, intent)
+            finish()
         }
     }
 

@@ -7,7 +7,8 @@ class ThreadTest {
 }
 
 fun main(args: Array<String>) {
-    test01()
+    //test01()
+    ThreadWaitTestJava.testWaitReleaseLock()
 }
 
 //1. 等待子线程执行完，再继续主线程执行

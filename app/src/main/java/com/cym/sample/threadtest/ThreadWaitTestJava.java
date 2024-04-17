@@ -105,6 +105,11 @@ public class ThreadWaitTestJava {
 
         Thread t2 = new Thread(()->{
             log("t2 start");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             synchronized (lock) {
                 log("t2 lock");
                 readBooks(10);
@@ -174,7 +179,7 @@ public class ThreadWaitTestJava {
         String time = y + "-" + m + "-" + d + " " + h + ":" + minute + ":" + s + "." + ms;
         System.out.println(time  + " ==> " + msg);
     }
-    private static void readBooks(int times) {
+    public static void readBooks(int times) {
         readBooks(times, "-");
     }
     private static void readBooks(int times, String content) {
@@ -189,7 +194,7 @@ public class ThreadWaitTestJava {
         }
     }
     private static void readABook(String content) {
-        String path = "H:\\git\\zlscreen-view-only\\app\\src\\main\\java\\com\\xzl\\screen\\module\\liftinfo\\deploy\\TestJava.java";
+        String path = "H:\\git\\ABaseSample\\app\\src\\main\\java\\com\\cym\\sample\\threadtest\\ThreadJoinTest.kt";
         try {
             FileReader reader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(reader);
