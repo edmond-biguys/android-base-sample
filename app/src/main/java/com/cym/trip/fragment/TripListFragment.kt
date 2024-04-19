@@ -14,6 +14,7 @@ import com.cym.androidx.coordinatorlayout.CoordinatorLayoutSampleActivity
 import com.cym.androidx.coordinatorlayout.LifecycleTestActivity
 import com.cym.androidx.coordinatorlayout.startmode.AActivity
 import com.cym.androidx.coordinatorlayout.viewpager2.ViewPager2SampleActivity
+import com.cym.customerview.CustomerViewActivity
 import com.cym.jetpack.workmanager.WorkManagerSampleActivity
 import com.cym.sample.camera.CameraXSampleActivity
 import com.cym.sample.contentprovider.ContentProviderSampleActivity
@@ -62,7 +63,7 @@ class TripListFragment : Fragment() {
                 "CoordinatorLayout", "ViewPager2", "Lifecycle Test", "Start Mode",
                 "Persistence", "FlowSample", "判断、选择题", "名词解释", "判断题-否",
                 "ContentProvider","CameraX", "MediaStore", "StorageTest", "DownloadTest",
-                "ThreadTest","ThreadTest","ThreadTest"
+                "ThreadTest", "CustomerView"
             )
 
             recyclerView01.adapter = MyAdapter(itemDataList, requireContext())
@@ -105,8 +106,7 @@ class TripListFragment : Fragment() {
                     items[position] == "StorageTest" -> navigateStorageTestActivity(context)
                     items[position] == "DownloadTest" -> navigateDownloadTestActivity(context)
                     items[position] == "ThreadTest" -> navigateThreadTestActivity(context)
-                    items[position] == "ThreadTest" -> navigateThreadTestActivity(context)
-                    items[position] == "ThreadTest" -> navigateThreadTestActivity(context)
+                    items[position] == "CustomerView" -> navigateCustomerViewActivity(context)
                     else -> println("do nothing")
                 }
 
@@ -175,6 +175,10 @@ class TripListFragment : Fragment() {
         private fun navigateThreadTestActivity(context: Context) {
             //context.startActivity(Intent(context, ThreadTestActivity::class.java))
             activity?.startActivityForResult(Intent(context, ThreadTestActivity::class.java), 1100)
+        }
+        private fun navigateCustomerViewActivity(context: Context) {
+            //context.startActivity(Intent(context, ThreadTestActivity::class.java))
+            context.startActivity(Intent(context, CustomerViewActivity::class.java))
         }
 
         override fun getItemCount(): Int {

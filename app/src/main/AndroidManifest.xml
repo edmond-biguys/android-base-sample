@@ -257,6 +257,10 @@ package="com.xmcc.androidbasesample">
         android:exported="false"
         />
 
+    <activity android:name="com.cym.customerview.CustomerViewActivity"
+        android:exported="false"
+        />
+
     <service
         android:name="com.cym.sample.binder.RemoteService"
         android:exported="true"
